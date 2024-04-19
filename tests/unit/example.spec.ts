@@ -16,7 +16,12 @@ class Database {
 }
 
 test.group('Example', () => {
-  test('example test', async ({ assert }) => {
+  test('Original', async ({ assert }) => {
+    const db = new Database()
+    const result = await db.where().and().limit()
+    assert.equal(result, 'my example result')
+  })
+  test('container.make', async ({ assert }) => {
     const db = await app.container.make(Database)
     const result = await db.where().and().limit()
     assert.equal(result, 'my example result')
